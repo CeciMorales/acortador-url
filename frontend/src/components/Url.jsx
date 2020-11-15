@@ -19,7 +19,8 @@ const Url = () => {
         axios.post('http://localhost:4000/api/url/', newUrl)
             .then((res) => {
                 console.log('url: ', res.data);
-                setCurrentUrl(res.data);
+                let completeUrl = 'http://localhost:3000/' + res.data;
+                setCurrentUrl(completeUrl);
                 console.log("url", currentUrl);
             })
             .catch((err) => {
@@ -46,7 +47,7 @@ const Url = () => {
                 </div>
                 
                 <button type="submit" class="btn btn-primary mt-3">Generar</button>
-            </form>
+            </form>           
             <p>
                 {currentUrl}
             </p>

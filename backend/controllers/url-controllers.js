@@ -14,8 +14,8 @@ urlCtrl.redirectUrl = async (req, res) => {
             console.log('url generado no valido')
         } else {
             console.log('si fue valido');
-            
-            return res.redirect(URL.original);
+            console.log('url original', URL.original)
+            res.json(URL.original);
         }
     }catch(error) {
         console.log(error);

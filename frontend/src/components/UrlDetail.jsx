@@ -17,8 +17,6 @@ const UrlDetail = () => {
         console.log("detail");
         status = true;
         
-        
-
     } else {
         console.log("no detail");
         status = false;
@@ -34,23 +32,28 @@ const UrlDetail = () => {
             console.log("selected bbb", selectedUrl);
         }
         
-    }
+    }   
 
-    const getPage = async (id) => {
+    const getExternalLink = async () => {
         if (!status) {
-            await axios(
+            console.log('holaaaa');
+            const resultUrl = await axios(
                 `http://localhost:4000/api/url/${id}`
-            ).then((res) => {
-                console.log('hola', res)
-            })
+            )
+            
+            setSelectedUrl(resultUrl.data);
+            console.log('selected ccc', selectedUrl);
+            window.location.href = selectedUrl;
 
         }
     }
 
-    getPage(id);
+    getExternalLink();
 
     useEffect(() => {
+        
         getUrl(newToken);
+        
     }, [])
 
     return(
